@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, request
 from ascii_art import create_ascii
 
@@ -17,6 +18,8 @@ def ascii():
     resp = {'valid': False, 'img': img}
   return render_template('art.html', ascii = resp)
 
-    
+
+
 if __name__ == '__main__':
-  app.run(host='0.0.0.0', port=3000, debug=True)
+    port = os.environ.get("PORT", 5000)
+    app.run(host='0.0.0.0', port=port, debug=False)
